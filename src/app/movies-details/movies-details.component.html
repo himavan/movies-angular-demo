@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="card " style="margin-top:64px;">
+        <img [src]="selectedMovie.img_uri" class="card-img-top " alt="... ">
+        <div class="card-body ">
+            <h5 class="card-title ">{{selectedMovie.name}}</h5>
+            <p class="card-text ">{{selectedMovie.description}}</p>
+            <p class="card-text ">Comments</p>
+            <div>
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let c of selectedMovie.comments">{{c}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div>
+        <form #cform="ngForm" (ngSubmit)="onClickSubmit(cform)">
+            <div class="form-group">
+                <label for="comment">Comment:</label>
+                <textarea name="comment" ngModel class="form-control" rows="5" id="comment"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+
+    </div>
+</div>
