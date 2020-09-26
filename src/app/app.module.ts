@@ -9,6 +9,9 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
+import { MoviesFilterPipe } from './movies-filter.pipe';
+import { NewMovieComponent } from './new-movie/new-movie.component';
+import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { FormsModule } from '@angular/forms';
     MoviesDetailsComponent,
     SignupComponent,
     LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    MoviesFilterPipe,
+    NewMovieComponent,
+    RatingComponent
   ],
   imports: [
     FormsModule,

@@ -18,7 +18,9 @@ export class LoginComponent implements OnInit {
 
   onClickSubmit(data) {
     if(this.dataservice.validateUser(data.value.username,data.value.password)){
-      localStorage.setItem('token',data.value.username);
+      
+      localStorage.setItem('token','token');
+      localStorage.setItem('isAdmin',this.dataservice.getUser(data.value.username).isAdmin.toString());
       this.router.navigateByUrl('/')
     } else {
       alert('Invalid Credentials')

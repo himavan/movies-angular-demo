@@ -1,11 +1,23 @@
 <div class="container" style="padding:64px;">
     <div class="row">
-        <div class="col-3" *ngFor="let movie of movies; let index = index">
+        <div class="col-10">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" [(ngModel)]="searchModel" placeholder="Search">
+            </div>
+        </div>
+        <div class="col-2">
+            <a *ngIf="isAdmin" [routerLink]="['new']" class="btn btn-primary ">Add New movie</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3" *ngFor="let movie of movies | moviesFilter: searchModel; let index = index">
             <div class="card ">
                 <img [src]="movie.img_uri" class="card-img-top " alt="... ">
                 <div class="card-body ">
                     <h5 class="card-title ">{{movie.name}}</h5>
                     <p class="card-text ">{{movie.description}}</p>
+                    <app-rating [rating]='movie.rating' [itemId]='movie.id' [readonly]="true"></app-rating>
                     <a [routerLink]="['details', movie.id]" class="btn btn-primary ">View More</a>
                 </div>
             </div>

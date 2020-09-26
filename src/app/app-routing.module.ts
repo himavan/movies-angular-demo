@@ -4,6 +4,7 @@ import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { MoviesDetailsComponent } from './movies-details/movies-details.component';
 import { MoviesListComponent } from './movies-list/movies-list.component';
+import { NewMovieComponent } from './new-movie/new-movie.component';
 import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'details/:id', component: MoviesDetailsComponent , canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'new', component: NewMovieComponent },
 ];
 
 @NgModule({

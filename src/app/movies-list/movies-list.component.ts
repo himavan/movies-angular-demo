@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AuthService } from '../auth.service';
 import { DataService } from '../data.service';
 
 @Component({
@@ -9,11 +10,14 @@ import { DataService } from '../data.service';
 export class MoviesListComponent implements OnInit {
 
   movies
+  isAdmin = false
 
-  constructor(public dataService: DataService) { }
+  searchModel
+  constructor(public dataService: DataService, public auth: AuthService) { }
 
   ngOnInit(): void {
     this.movies = this.dataService.getMovies();
+    this.isAdmin = this.auth.isAdmin();
   }
 
 }

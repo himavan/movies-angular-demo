@@ -4,15 +4,24 @@
         <div class="card-body ">
             <h5 class="card-title ">{{selectedMovie.name}}</h5>
             <p class="card-text ">{{selectedMovie.description}}</p>
+            <p>
+                Rating
+            </p>
+            <p class="card-text" style="height: 40px;">
+                <app-rating [rating]='selectedMovie.rating' [itemId]='selectedMovie.id' (ratingClick)='ratingComponentClick($event)' [readonly]="false"></app-rating>
+            </p>
             <p class="card-text ">Comments</p>
             <div>
                 <ul class="list-group">
-                    <li class="list-group-item" *ngFor="let c of selectedMovie.comments">{{c}}</li>
+                    <li class="list-group-item" *ngFor="let c of selectedMovie.comments">
+                        <p style="font-size: 10px;">{{c.name}}</p>
+                        <p style="text-align: end;">{{c.comment}}</p>
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
-    <div>
+    <div *ngIf="isAuth">
         <form #cform="ngForm" (ngSubmit)="onClickSubmit(cform)">
             <div class="form-group">
                 <label for="comment">Comment:</label>
@@ -22,6 +31,11 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </form>
-
+    </div>
+    <div *ngIf="!isAuth">
+        <div class="form-group">
+            <label for="comment">Please sign in to comment</label>
+            <button type="submit" routerLink="/login" class="btn btn-primary">Signin</button>
+        </div>
     </div>
 </div>
