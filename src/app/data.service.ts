@@ -70,6 +70,15 @@ export class DataService {
     this.movies.push(data)
   }
 
+  deleteMovie(id){
+    for (let index = 0; index < this.movies.length; index++) {
+      if (this.movies[index].id === id) {
+        this.movies.splice(index,1)
+      }
+
+    }
+  }
+
   validateUser(username, password) {
     for (let index = 0; index < this.users.length; index++) {
       console.log(username, password)

@@ -19,5 +19,9 @@ export class MoviesListComponent implements OnInit {
     this.movies = this.dataService.getMovies();
     this.isAdmin = this.auth.isAdmin();
   }
+  
+  deleteMovie(id) {
+    this.dataService.deleteMovie(id)
+  }
 
 }
